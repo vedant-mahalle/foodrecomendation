@@ -1,0 +1,439 @@
+{
+    "underweight": {
+        "male": {
+            "0-17": {
+                "insights": "Focus on nutrient-dense meals to support growth and muscle development.",
+                "exercise": [
+                    "Outdoor play",
+                    "Bodyweight exercises",
+                    "Swimming"
+                ],
+                "nutrition": [
+                    "Protein-rich foods",
+                    "Healthy fats",
+                    "Frequent balanced meals"
+                ]
+            },
+            "18-25": {
+                "insights": "Build muscle mass with strength training and high-protein intake.",
+                "exercise": [
+                    "Weight training 4x per week",
+                    "Low-intensity cardio 2x per week"
+                ],
+                "nutrition": [
+                    "High-protein diet",
+                    "Healthy fats",
+                    "Frequent, small meals"
+                ]
+            },
+            "26-39": {
+                "insights": "Maintain muscle tone and improve caloric intake with nutritious foods.",
+                "exercise": [
+                    "Weightlifting 3-4x per week",
+                    "Flexibility exercises"
+                ],
+                "nutrition": [
+                    "Lean meats, dairy, nuts",
+                    "Iron-rich foods"
+                ]
+            },
+            "40+": {
+                "insights": "Prioritize muscle maintenance, bone health, and digestion.",
+                "exercise": [
+                    "Light strength training",
+                    "Daily walking",
+                    "Yoga"
+                ],
+                "nutrition": [
+                    "Calcium and Vitamin D",
+                    "Hydration",
+                    "Fiber intake"
+                ]
+            }
+        },
+        "female": {
+            "0-17": {
+                "insights": "Ensure sufficient nutrients for proper growth and development.",
+                "exercise": [
+                    "Outdoor activities",
+                    "Gymnastics",
+                    "Swimming"
+                ],
+                "nutrition": [
+                    "Iron-rich foods",
+                    "Protein sources",
+                    "Balanced diet"
+                ]
+            },
+            "18-25": {
+                "insights": "Support energy levels and muscle growth with balanced meals.",
+                "exercise": [
+                    "Pilates",
+                    "Strength training",
+                    "Moderate cardio"
+                ],
+                "nutrition": [
+                    "Lean proteins",
+                    "Healthy fats",
+                    "Adequate hydration"
+                ]
+            },
+            "26-39": {
+                "insights": "Balance hormones and energy levels with nutritious meals and exercise.",
+                "exercise": [
+                    "Strength training 3x per week",
+                    "Yoga for flexibility",
+                    "Low-impact cardio"
+                ],
+                "nutrition": [
+                    "More fiber",
+                    "Calcium and Vitamin D",
+                    "Protein intake"
+                ]
+            },
+            "40+": {
+                "insights": "Support bone health and metabolism with balanced meals.",
+                "exercise": [
+                    "Brisk walking",
+                    "Yoga",
+                    "Low-impact strength training"
+                ],
+                "nutrition": [
+                    "Increase fiber",
+                    "Monitor sodium intake",
+                    "Stay hydrated"
+                ]
+            }
+        }
+    },
+    "normal": {
+        "male": {
+            "0-17": {
+                "insights": "Focus on maintaining energy levels and supporting growth with a balanced diet and regular physical activity.",
+                "exercise": [
+                    "Soccer or basketball",
+                    "Cycling",
+                    "Swimming"
+                ],
+                "nutrition": [
+                    "Balanced meals with all food groups",
+                    "Whole grains and lean protein",
+                    "Fruits and vegetables"
+                ]
+            },
+            "18-25": {
+                "insights": "Support active lifestyles with nutrient-dense meals and regular exercise to maintain muscle mass.",
+                "exercise": [
+                    "Weight training 3x per week",
+                    "Running or jogging",
+                    "Group sports like basketball or soccer"
+                ],
+                "nutrition": [
+                    "Adequate protein for muscle repair",
+                    "Healthy fats for energy",
+                    "Complex carbohydrates"
+                ]
+            },
+            "26-39": {
+                "insights": "Prioritize maintaining metabolism and muscle tone while balancing a busy lifestyle.",
+                "exercise": [
+                    "Strength training 3x per week",
+                    "Cycling or swimming for cardio",
+                    "Yoga for flexibility"
+                ],
+                "nutrition": [
+                    "High-protein diet",
+                    "Adequate hydration",
+                    "Plenty of vegetables and whole grains"
+                ]
+            },
+            "40+": {
+                "insights": "Maintain health by focusing on joint health, muscle maintenance, and reducing stress.",
+                "exercise": [
+                    "Daily walking",
+                    "Light strength training",
+                    "Yoga or Pilates"
+                ],
+                "nutrition": [
+                    "Calcium-rich foods for bone health",
+                    "Omega-3 fats",
+                    "Fiber for digestion"
+                ]
+            }
+        },
+        "female": {
+            "0-17": {
+                "insights": "Support growth with nutrient-dense foods and encourage active play.",
+                "exercise": [
+                    "Dancing",
+                    "Gymnastics",
+                    "Swimming"
+                ],
+                "nutrition": [
+                    "Iron-rich foods",
+                    "Balanced diet with fruits and vegetables",
+                    "Healthy fats"
+                ]
+            },
+            "18-25": {
+                "insights": "Focus on maintaining energy levels and hormonal balance with wholesome meals.",
+                "exercise": [
+                    "Strength training",
+                    "Moderate cardio",
+                    "Yoga for relaxation"
+                ],
+                "nutrition": [
+                    "Lean proteins",
+                    "Healthy fats",
+                    "Adequate hydration"
+                ]
+            },
+            "26-39": {
+                "insights": "Focus on hormonal balance and energy levels while managing stress.",
+                "exercise": [
+                    "Strength training",
+                    "Low-impact cardio",
+                    "Yoga or Pilates"
+                ],
+                "nutrition": [
+                    "Fiber-rich foods",
+                    "Calcium and Vitamin D",
+                    "Adequate protein intake"
+                ]
+            },
+            "40+": {
+                "insights": "Support bone health, maintain a healthy weight, and improve digestion.",
+                "exercise": [
+                    "Brisk walking",
+                    "Yoga for flexibility",
+                    "Light strength training"
+                ],
+                "nutrition": [
+                    "High-fiber foods",
+                    "Calcium-rich options",
+                    "Hydration"
+                ]
+            }
+        }
+    },
+    "overweight": {
+        "male": {
+            "0-17": {
+                "insights": "Encourage active play and reduce sedentary behaviors. Introduce portion control and healthier food choices.",
+                "exercise": [
+                    "Outdoor games like soccer or basketball",
+                    "Swimming",
+                    "Cycling"
+                ],
+                "nutrition": [
+                    "Reduce sugary and fried foods",
+                    "Increase fruit and vegetable intake",
+                    "Focus on lean protein and whole grains"
+                ],
+                "18-25": {
+                    "insights": "Incorporate regular exercise and adopt a diet low in refined carbs and high in nutrients.",
+                    "exercise": [
+                        "HIIT workouts 3x per week",
+                        "Running or jogging",
+                        "Bodyweight exercises"
+                    ],
+                    "nutrition": [
+                        "High-protein, low-carb meals",
+                        "Avoid sugary drinks",
+                        "Increase fiber intake"
+                    ]
+                },
+                "26-39": {
+                    "insights": "Focus on maintaining muscle while reducing body fat through balanced meals and consistent workouts.",
+                    "exercise": [
+                        "Strength training 3-4x per week",
+                        "Swimming or cycling for cardio",
+                        "Yoga for stress management"
+                    ],
+                    "nutrition": [
+                        "Balanced meals with fewer calories",
+                        "Cut back on processed foods",
+                        "Focus on high-protein, high-fiber diets"
+                    ]
+                },
+                "40+": {
+                    "insights": "Promote weight loss and joint health with low-impact exercises and nutrient-rich, calorie-controlled meals.",
+                    "exercise": [
+                        "Daily brisk walking",
+                        "Light strength training",
+                        "Yoga or Pilates"
+                    ],
+                    "nutrition": [
+                        "Limit calorie intake",
+                        "Emphasize high-fiber, low-fat meals",
+                        "Stay hydrated"
+                    ]
+                }
+            },
+            "female": {
+                "0-17": {
+                    "insights": "Encourage active habits and introduce portion-controlled, nutrient-dense meals.",
+                    "exercise": [
+                        "Dancing or gymnastics",
+                        "Swimming",
+                        "Cycling"
+                    ],
+                    "nutrition": [
+                        "Whole grains and lean proteins",
+                        "Cut back on sugary snacks",
+                        "Incorporate more fruits and vegetables"
+                    ]
+                },
+                "18-25": {
+                    "insights": "Focus on calorie control and regular physical activity to achieve a healthy weight.",
+                    "exercise": [
+                        "Strength training",
+                        "Low-impact cardio",
+                        "Yoga or Pilates"
+                    ],
+                    "nutrition": [
+                        "Low-carb, high-protein meals",
+                        "Avoid processed and sugary foods",
+                        "Include plenty of vegetables"
+                    ]
+                },
+                "26-39": {
+                    "insights": "Adopt a sustainable diet and exercise plan to reduce weight and support overall health.",
+                    "exercise": [
+                        "Strength training 3x per week",
+                        "Walking or jogging",
+                        "Yoga for flexibility and stress relief"
+                    ],
+                    "nutrition": [
+                        "High-protein, high-fiber meals",
+                        "Reduce processed foods",
+                        "Stay hydrated"
+                    ]
+                },
+                "40+": {
+                    "insights": "Focus on weight loss while supporting joint health and maintaining energy levels.",
+                    "exercise": [
+                        "Daily brisk walks",
+                        "Low-impact strength training",
+                        "Yoga or stretching"
+                    ],
+                    "nutrition": [
+                        "High-fiber, low-fat meals",
+                        "Calcium-rich foods for bone health",
+                        "Hydration with water and herbal teas"
+                    ]
+                }
+            }
+        }
+    },
+    "obese": {
+        "male": {
+            "0-17": {
+                "insights": "Address obesity with a combination of increased physical activity, reduced screen time, and a nutrient-dense, portion-controlled diet.",
+                "exercise": [
+                    "Walking or jogging for 30-45 minutes daily",
+                    "Swimming or water-based activities",
+                    "Light team sports like basketball or soccer"
+                ],
+                "nutrition": [
+                    "Eliminate sugary drinks and junk food",
+                    "Increase consumption of whole grains, fruits, and vegetables",
+                    "Focus on lean protein sources"
+                ]
+            },
+            "18-25": {
+                "insights": "Prioritize lifestyle changes with regular exercise, a calorie-controlled diet, and reduced intake of refined sugars and carbs.",
+                "exercise": [
+                    "Strength training 2-3 times per week",
+                    "Cardio like cycling or brisk walking",
+                    "Swimming or water aerobics"
+                ],
+                "nutrition": [
+                    "Focus on high-protein, high-fiber meals",
+                    "Avoid processed foods and sugary drinks",
+                    "Practice portion control"
+                ]
+            },
+            "26-39": {
+                "insights": "Combine consistent exercise with a diet emphasizing portion control, lean proteins, and low-calorie, nutrient-dense foods.",
+                "exercise": [
+                    "Daily brisk walking or light jogging",
+                    "Strength training twice a week",
+                    "Yoga or Pilates for flexibility and stress relief"
+                ],
+                "nutrition": [
+                    "Adopt a calorie-controlled, high-fiber diet",
+                    "Limit alcohol and sugary snacks",
+                    "Drink plenty of water throughout the day"
+                ]
+            },
+            "40+": {
+                "insights": "Focus on low-impact activities and a nutrient-rich, low-calorie diet to support weight loss and joint health.",
+                "exercise": [
+                    "Daily brisk walking or water aerobics",
+                    "Light strength training or resistance band exercises",
+                    "Yoga or stretching for flexibility"
+                ],
+                "nutrition": [
+                    "Low-fat, high-fiber, and protein-rich meals",
+                    "Calcium and vitamin D-rich foods for bone health",
+                    "Avoid sugary and high-calorie snacks"
+                ]
+            }
+        },
+        "female": {
+            "0-17": {
+                "insights": "Encourage regular physical activity and a balanced, portion-controlled diet, avoiding high-calorie snacks.",
+                "exercise": [
+                    "Dancing or swimming for 30 minutes daily",
+                    "Light outdoor sports",
+                    "Cycling or brisk walking"
+                ],
+                "nutrition": [
+                    "Focus on whole grains, fruits, and vegetables",
+                    "Cut back on sugary and fried foods",
+                    "Incorporate lean proteins like chicken, fish, or tofu"
+                ]
+            },
+            "18-25": {
+                "insights": "Adopt a consistent exercise routine and reduce calorie intake with nutrient-dense meals.",
+                "exercise": [
+                    "Strength training and cardio sessions 3x per week",
+                    "Yoga or Pilates for flexibility and mindfulness",
+                    "Cycling or swimming"
+                ],
+                "nutrition": [
+                    "Low-carb, high-protein meals",
+                    "Avoid sugary snacks and drinks",
+                    "Emphasize vegetables and whole grains"
+                ]
+            },
+            "26-39": {
+                "insights": "Focus on maintaining muscle mass while reducing body fat with balanced meals and regular workouts.",
+                "exercise": [
+                    "Strength training 2-3 times per week",
+                    "Walking or jogging",
+                    "Yoga or stretching exercises"
+                ],
+                "nutrition": [
+                    "Adopt a low-calorie, high-fiber diet",
+                    "Increase protein intake",
+                    "Stay hydrated and avoid sugary snacks"
+                ]
+            },
+            "40+": {
+                "insights": "Adopt low-impact exercises and nutrient-rich, calorie-controlled meals to support weight loss and joint health.",
+                "exercise": [
+                    "Daily brisk walks or water aerobics",
+                    "Yoga or Pilates for flexibility and mindfulness",
+                    "Resistance band exercises"
+                ],
+                "nutrition": [
+                    "Low-calorie, high-protein meals",
+                    "Focus on calcium-rich foods for bone health",
+                    "Drink plenty of water and avoid processed foods"
+                ]
+            }
+        }
+    }
+}

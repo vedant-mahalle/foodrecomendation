@@ -1,138 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Recommendation</title>
+    <title>Meal Recommendation - Multi Step Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
+ 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
-        <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Meal Recommendation System</h1>
-
-        <div class="space-y-4">
-            <div>
-                <label for="weight" class="block text-gray-600">Weight (kg):</label>
-                <input type="number" id="weight" step="any" class="w-full p-2 border border-gray-300 rounded-lg"
-                    placeholder="Enter weight">
-            </div>
-
-            <div>
-                <label for="height" class="block text-gray-600">Height (cm):</label>
-                <input type="number" id="height" step="any" class="w-full p-2 border border-gray-300 rounded-lg"
-                    placeholder="Enter height">
-            </div>
-
-            <div>
-                <label for="region" class="block text-gray-600">Region:</label>
-                <input type="text" id="region" class="w-full p-2 border border-gray-300 rounded-lg"
-                    placeholder="Enter your region">
-            </div>
-
-            <div>
-                <label for="diet" class="block text-gray-600">Diet Type:</label>
-                <input type="text" id="diet" class="w-full p-2 border border-gray-300 rounded-lg"
-                    placeholder="Enter diet preference (or 'none')">
-            </div>
-
-            <div>
-                <label for="allergies" class="block text-gray-600">Allergies (comma-separated):</label>
-                <input type="text" id="allergies" class="w-full p-2 border border-gray-300 rounded-lg"
-                    placeholder="E.g., peanuts, gluten">
-            </div>
-
-            <button onclick="getRecommendation()" id="recommend-btn"
-                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg">Get
-                Recommendations</button>
-        </div>
-
-        <h2 class="text-xl font-semibold text-gray-700 mt-6">Results:</h2>
-        <p id="bmi_result" class="text-gray-600"></p>
-        <ul id="meal_recommendations" class="list-disc list-inside text-gray-700"></ul>
+ 
+    <!-- Step 1: Basic Details -->
+    <div id="step1" class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Step 1: Basic Information</h1>
+ 
+        <label class="block">
+            Age:
+            <input type="number" id="age" required class="border p-2 w-full rounded">
+        </label>
+ 
+        <label class="block">
+            Gender:
+            <select id="gender" required class="border p-2 w-full rounded">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </label>
+ 
+        <label class="block">
+            Height (cm):
+            <input type="number" id="height" required class="border p-2 w-full rounded">
+        </label>
+ 
+        <label class="block">
+            Weight (kg):
+            <input type="number" id="weight" required class="border p-2 w-full rounded">
+        </label>
+ 
+        <button onclick="nextStep()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
+            Next Step
+        </button>
     </div>
-
+ 
+    <!-- Step 2: Preferences -->
+    <div id="step2" class="hidden bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Step 2: Preferences</h1>
+ 
+        <label class="block">
+            Diet Preference:
+            <select id="preference" class="border p-2 w-full rounded">
+                <option value="veg">Vegetarian</option>
+                <option value="non-veg">Non-Vegetarian</option>
+            </select>
+        </label>
+ 
+        <label class="block">
+            Region:
+            <input type="text" id="region" required class="border p-2 w-full rounded" placeholder="e.g., North India">
+        </label>
+ 
+        <label class="block">
+            Allergies (comma-separated):
+            <input type="text" id="allergies" class="border p-2 w-full rounded" placeholder="e.g., peanuts, dairy">
+        </label>
+ 
+        <button onclick="submitData()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded">
+            Get Recommendations
+        </button>
+ 
+        <button onclick="prevStep()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 rounded">
+            Back
+        </button>
+    </div>
+ 
+    <!-- Results -->
+    <div id="results-container" class="hidden bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
+        <h2 class="text-2xl font-bold text-center text-gray-700">Results</h2>
+        <p id="bmi_result" class="text-gray-600 font-medium"></p>
+ 
+        <h3 class="font-bold mt-4">Meal Recommendations:</h3>
+        <ul id="meal_recommendations" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
+ 
+        <h3 class="font-bold mt-4">Health Tips:</h3>
+        <ul id="health_tips" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
+ 
+        <h3 class="font-bold mt-4">Exercise Recommendations:</h3>
+        <ul id="exercise_recommendations" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
+ 
+        <button onclick="restart()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 rounded-lg">
+            Start Over
+        </button>
+    </div>
+ 
     <script>
-        async function getRecommendation() {
-    const weight = parseFloat(document.getElementById("weight").value.trim());
-    const height = parseFloat(document.getElementById("height").value.trim());
-    const region = document.getElementById("region").value.trim();
-    const diet = document.getElementById("diet").value.trim();
-    const allergies = document.getElementById("allergies").value.trim();
-
-    // Input validation
-    if (isNaN(weight) || isNaN(height) || region === "") {
-        displayError("Please enter valid weight, height, and region.");
-        return;
-    }
-
-    // Format allergies input
-    const requestData = {
-        weight,
-        height,
-        region,
-        diet,
-        allergies: allergies ? allergies.split(",").map(a => a.trim().toLowerCase()) : []
-    };
-
-    // Disable button and show loading state
-    const btn = document.getElementById("recommend-btn");
-    btn.innerText = "Loading...";
-    btn.disabled = true;
-
-    try {
-        const response = await fetch('/recommend', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestData)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Server Error: ${response.status}`);
+        let formData = {};
+ 
+        function nextStep() {
+            formData.age = document.getElementById('age').value;
+            formData.gender = document.getElementById('gender').value;
+            formData.height = document.getElementById('height').value;
+            formData.weight = document.getElementById('weight').value;
+ 
+            if (!formData.age || !formData.height || !formData.weight) {
+                alert('Please fill all fields.');
+                return;
+            }
+ 
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
         }
-
-        const data = await response.json();
-        displayResults(data);
-    } catch (error) {
-        displayError("Error fetching recommendations.");
-        console.error("Fetch Error:", error);
-    }
-
-    // Re-enable button
-    btn.innerText = "Get Recommendations";
-    btn.disabled = false;
-}
-
-function displayResults(data) {
-    if (data.error) {
-        displayError(data.error);
-        return;
-    }
-
-    document.getElementById("bmi_result").innerText = `Your BMI: ${data.bmi.toFixed(2)}`;
-    const mealList = document.getElementById("meal_recommendations");
-    mealList.innerHTML = "";
-
-    if (!data.meals || data.meals.length === 0) {
-        mealList.innerHTML = "<li>No suitable meals found.</li>";
-        return;
-    }
-
-    data.meals.forEach(meal => {
-        let item = document.createElement("li");
-        item.innerText = `${meal["Food Name"] || "Unnamed Meal"} (${meal.calories} kcal)`;
-        mealList.appendChild(item);
-    });
-}
-
-function displayError(message) {
-    document.getElementById("bmi_result").innerText = message;
-    document.getElementById("meal_recommendations").innerHTML = "";
-}
-
+ 
+        function prevStep() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step1').classList.remove('hidden');
+        }
+ 
+        async function submitData() {
+            formData.preference = document.getElementById('preference').value;
+            formData.region = document.getElementById('region').value;
+            formData.allergies = document.getElementById('allergies').value
+                ? document.getElementById('allergies').value.split(',').map(a => a.trim().toLowerCase())
+                : [];
+ 
+            try {
+                const response = await fetch('/recommend', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+ 
+                if (!response.ok) {
+                    throw new Error(`Server Error: ${response.status}`);
+                }
+ 
+                const data = await response.json();
+                displayResults(data);
+            } catch (error) {
+                alert("Error fetching recommendations.");
+                console.error("Fetch Error:", error);
+            }
+        }
+ 
+        function displayResults(data) {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('results-container').classList.remove('hidden');
+ 
+            document.getElementById('bmi_result').innerText = `Your BMI: ${data.bmi.toFixed(2)} (${data.bmi_category})`;
+ 
+            const mealList = document.getElementById('meal_recommendations');
+            mealList.innerHTML = "";
+            data.meals.forEach(meal => {
+                const li = document.createElement("li");
+                li.innerText = `${meal["Food Name"]} (${meal.calories} kcal)`;
+                mealList.appendChild(li);
+            });
+ 
+            const healthTipsList = document.getElementById('health_tips');
+            healthTipsList.innerHTML = "";
+            data.health_tips.forEach(tip => {
+                const li = document.createElement("li");
+                li.innerText = tip;
+                healthTipsList.appendChild(li);
+            });
+ 
+            const exerciseList = document.getElementById('exercise_recommendations');
+            exerciseList.innerHTML = "";
+            data.exercise_recommendations.forEach(exercise => {
+                const li = document.createElement("li");
+                li.innerText = exercise;
+                exerciseList.appendChild(li);
+            });
+        }
+ 
+        function restart() {
+            location.reload();
+        }
     </script>
-    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>
+ 
