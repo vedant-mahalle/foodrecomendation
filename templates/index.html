@@ -4,174 +4,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Recommendation - Multi Step Form</title>
+    <title>NutriPlan - Precision Diet Recommendations</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1724424280318-dd8f62cd3f5a?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.45);
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .form-container {
+            background-color: #23272f;
+            color: #fff;
+            box-shadow: 0 12px 40px 0 rgba(30, 41, 59, 0.35), 0 2px 8px rgba(0,0,0,0.18);
+            border: 1px solid #303131;
+            margin: 2rem auto;
+            max-width: 480px;
+            width: 100%;
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        
+        .form-header {
+            background-color: #181a20;
+            color: #fff;
+            padding: 1.5rem 1rem 1rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #f59e0b;
+            margin: -2.5rem -2rem 2rem -2rem;
+        }
+        
+        .form-input {
+            border: 2px solid #303131;
+            background-color: #f8fafc;
+            color: #181a20;
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #f59e0b;
+            background-color: #fff;
+            color: #5e6888;
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+        }
+        
+        .form-input::placeholder {
+            color: #6b7280;
+            opacity: 1;
+        }
+        
+        label {
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background-color: #f59e0b;
+            color: #181a20;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            transition: all 0.2s ease;
+            border: none;
+            box-shadow: 0 2px 8px rgba(30,41,59,0.18);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d97706;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(30,41,59,0.22);
+        }
+        
+        .result-card {
+            background-color: #23272f;
+            color: #fff;
+            border: 1px solid #303131;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+        
+        .bmi-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            color: #fff;
+        }
+        
+        .bmi-normal { color: #34d399; }
+        .bmi-underweight { color: #38bdf8; }
+        .bmi-overweight { color: #fbbf24; }
+        .bmi-obese { color: #f87171; }
+        
+        .food-item {
+            border-left: 3px solid #f59e0b;
+            background: #181a20;
+            color: #fff;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.4s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        ::selection { background: #f59e0b; color: #181a20; }
+        
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 1.2rem 0.5rem 1rem 0.5rem;
+                max-width: 98vw;
+                margin: 1rem auto;
+            }
+            .form-header {
+                padding: 1rem 0.5rem 0.5rem 0.5rem;
+                font-size: 1.1rem;
+            }
+            .result-card, .form-container {
+                font-size: 1rem;
+            }
+            .bmi-value { font-size: 1.5rem; }
+            .btn-primary { font-size: 1rem; padding: 0.8rem 0; }
+        }
+    </style>
 </head>
  
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
- 
-    <!-- Step 1: Basic Details -->
-    <div id="step1" class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
-        <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Step 1: Basic Information</h1>
- 
-        <label class="block">
-            Age:
-            <input type="number" id="age" required class="border p-2 w-full rounded">
-        </label>
- 
-        <label class="block">
-            Gender:
-            <select id="gender" required class="border p-2 w-full rounded">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </label>
- 
-        <label class="block">
-            Height (cm):
-            <input type="number" id="height" required class="border p-2 w-full rounded">
-        </label>
- 
-        <label class="block">
-            Weight (kg):
-            <input type="number" id="weight" required class="border p-2 w-full rounded">
-        </label>
- 
-        <button onclick="nextStep()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
-            Next Step
-        </button>
+<body class="flex items-center justify-center p-4">
+    <div id="main-form" class="form-container slide-in">
+        <div class="form-header">
+            <h1 class="text-2xl font-bold">NUTRIPLAN</h1>
+            <p class="opacity-90 mt-1">Personalized Diet Recommendation</p>
+        </div>
+        <form id="nutriForm" class="space-y-5">
+            <div>
+                <label class="block text-gray-700 mb-2 font-medium">Age</label>
+                <input type="number" id="age" required class="form-input w-full p-3 focus:outline-none" min="1">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-medium">Gender</label>
+                <select id="gender" required class="form-input w-full p-3 focus:outline-none">
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Height (cm)</label>
+                    <input type="number" id="height" required class="form-input w-full p-3 focus:outline-none" min="1">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Weight (kg)</label>
+                    <input type="number" id="weight" required class="form-input w-full p-3 focus:outline-none" min="1">
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-medium">Diet Type</label>
+                <select id="preference" class="form-input w-full p-3 focus:outline-none">
+                    <option value="balanced">Balanced</option>
+                    <option value="veg">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="keto">Keto</option>
+                    <option value="mediterranean">Mediterranean</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-medium">Calorie Target</label>
+                <select id="calories" class="form-input w-full p-3 focus:outline-none">
+                    <option value="maintain">Maintain Weight</option>
+                    <option value="lose">Lose Weight</option>
+                    <option value="gain">Gain Weight</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-medium">Food Allergies</label>
+                <input type="text" id="allergies" class="form-input w-full p-3 focus:outline-none" placeholder="e.g., dairy, gluten, nuts">
+            </div>
+            <button type="submit" class="btn-primary w-full py-3 mt-2">GENERATE PLAN</button>
+        </form>
     </div>
- 
-    <!-- Step 2: Preferences -->
-    <div id="step2" class="hidden bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
-        <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Step 2: Preferences</h1>
- 
-        <label class="block">
-            Diet Preference:
-            <select id="preference" class="border p-2 w-full rounded">
-                <option value="veg">Vegetarian</option>
-                <option value="non-veg">Non-Vegetarian</option>
-            </select>
-        </label>
- 
-        <label class="block">
-            Region:
-            <input type="text" id="region" required class="border p-2 w-full rounded" placeholder="e.g., North India">
-        </label>
- 
-        <label class="block">
-            Allergies (comma-separated):
-            <input type="text" id="allergies" class="border p-2 w-full rounded" placeholder="e.g., peanuts, dairy">
-        </label>
- 
-        <button onclick="submitData()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded">
-            Get Recommendations
-        </button>
- 
-        <button onclick="prevStep()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 rounded">
-            Back
-        </button>
+    <div id="results-container" class="form-container max-w-2xl w-full hidden slide-in">
+        <div class="form-header">
+            <h1 class="text-2xl font-bold">YOUR PERSONALIZED PLAN</h1>
+            <p class="opacity-90 mt-1">Tailored nutrition for your goals</p>
+        </div>
+        <div class="p-6">
+            <div class="result-card p-5 mb-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-gray-500 uppercase text-sm font-semibold">Body Mass Index</h3>
+                        <div id="bmi_result" class="bmi-value bmi-normal">24.2</div>
+                        <div id="bmi_category" class="text-gray-600 font-medium">Healthy weight range</div>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-500 uppercase text-sm font-semibold">Daily Calories</h3>
+                        <div id="calorie_target" class="text-3xl font-bold text-gray-800 mt-2">2,150 <span class="text-lg">kcal</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="result-card p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-100">MEAL PLAN</h3>
+                    <ul id="meal_recommendations" class="space-y-4"></ul>
+                </div>
+                <div class="space-y-6">
+                    <div class="result-card p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">NUTRITION TIPS</h3>
+                        <ul id="health_tips" class="space-y-3"></ul>
+                    </div>
+                    <div class="result-card p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">ACTIVITY RECOMMENDATIONS</h3>
+                        <ul id="exercise_recommendations" class="space-y-3"></ul>
+                    </div>
+                </div>
+            </div>
+            <button onclick="restart()" class="btn-primary w-full py-3 mt-6">START NEW PLAN</button>
+        </div>
     </div>
- 
-    <!-- Results -->
-    <div id="results-container" class="hidden bg-white shadow-lg rounded-lg p-6 max-w-md w-full space-y-4">
-        <h2 class="text-2xl font-bold text-center text-gray-700">Results</h2>
-        <p id="bmi_result" class="text-gray-600 font-medium"></p>
- 
-        <h3 class="font-bold mt-4">Meal Recommendations:</h3>
-        <ul id="meal_recommendations" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
- 
-        <h3 class="font-bold mt-4">Health Tips:</h3>
-        <ul id="health_tips" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
- 
-        <h3 class="font-bold mt-4">Exercise Recommendations:</h3>
-        <ul id="exercise_recommendations" class="list-disc list-inside text-gray-700 mt-2 space-y-1"></ul>
- 
-        <button onclick="restart()" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 rounded-lg">
-            Start Over
-        </button>
-    </div>
- 
     <script>
         let formData = {};
- 
-        function nextStep() {
+        document.getElementById('nutriForm').onsubmit = async function(e) {
+            e.preventDefault();
             formData.age = document.getElementById('age').value;
             formData.gender = document.getElementById('gender').value;
             formData.height = document.getElementById('height').value;
             formData.weight = document.getElementById('weight').value;
- 
-            if (!formData.age || !formData.height || !formData.weight) {
-                alert('Please fill all fields.');
-                return;
-            }
- 
-            document.getElementById('step1').classList.add('hidden');
-            document.getElementById('step2').classList.remove('hidden');
-        }
- 
-        function prevStep() {
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step1').classList.remove('hidden');
-        }
- 
-        async function submitData() {
             formData.preference = document.getElementById('preference').value;
-            formData.region = document.getElementById('region').value;
+            formData.calories = document.getElementById('calories').value;
             formData.allergies = document.getElementById('allergies').value
                 ? document.getElementById('allergies').value.split(',').map(a => a.trim().toLowerCase())
                 : [];
- 
+            const submitBtn = document.querySelector('#nutriForm button[type="submit"]');
+            submitBtn.innerHTML = 'GENERATING...';
+            submitBtn.disabled = true;
             try {
-                const response = await fetch('/recommend', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
- 
-                if (!response.ok) {
-                    throw new Error(`Server Error: ${response.status}`);
+                await new Promise(resolve => setTimeout(resolve, 1200));
+                const heightInMeters = formData.height / 100;
+                const bmi = (formData.weight / (heightInMeters * heightInMeters)).toFixed(1);
+                let bmiCategory = '';
+                let bmiClass = '';
+                if (bmi < 18.5) {
+                    bmiCategory = 'Underweight';
+                    bmiClass = 'bmi-underweight';
+                } else if (bmi >= 18.5 && bmi < 25) {
+                    bmiCategory = 'Normal weight';
+                    bmiClass = 'bmi-normal';
+                } else if (bmi >= 25 && bmi < 30) {
+                    bmiCategory = 'Overweight';
+                    bmiClass = 'bmi-overweight';
+                } else {
+                    bmiCategory = 'Obese';
+                    bmiClass = 'bmi-obese';
                 }
- 
-                const data = await response.json();
-                displayResults(data);
+                let calorieTarget = 2000;
+                if (formData.calories === 'lose') calorieTarget = 1700;
+                if (formData.calories === 'gain') calorieTarget = 2500;
+                if (formData.gender === 'male') calorieTarget += 200;
+                if (formData.gender === 'female') calorieTarget -= 200;
+                const mockData = {
+                    bmi: parseFloat(bmi),
+                    bmi_category: bmiCategory,
+                    calorie_target: calorieTarget,
+                    meals: [
+                        { meal: "Breakfast", name: "Oatmeal with berries and almonds", calories: 450, protein: 18 },
+                        { meal: "Lunch", name: "Grilled chicken with quinoa salad", calories: 550, protein: 35 },
+                        { meal: "Dinner", name: "Salmon with roasted vegetables", calories: 500, protein: 30 }
+                    ],
+                    health_tips: [
+                        "Drink water before meals to reduce appetite",
+                        "Include protein with every meal",
+                        "Limit processed foods and added sugars"
+                    ],
+                    exercise_recommendations: [
+                        "30 min brisk walking daily",
+                        "Strength training 3x/week",
+                        "Yoga or stretching 2x/week"
+                    ]
+                };
+                displayResults(mockData, bmiClass);
             } catch (error) {
-                alert("Error fetching recommendations.");
-                console.error("Fetch Error:", error);
+                alert("Error generating plan. Please try again.");
+                submitBtn.innerHTML = 'GENERATE PLAN';
+                submitBtn.disabled = false;
             }
-        }
- 
-        function displayResults(data) {
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('results-container').classList.remove('hidden');
- 
-            document.getElementById('bmi_result').innerText = `Your BMI: ${data.bmi.toFixed(2)} (${data.bmi_category})`;
- 
+        };
+        function displayResults(data, bmiClass) {
+            document.getElementById('main-form').classList.add('hidden');
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.classList.remove('hidden');
+            document.getElementById('bmi_result').innerText = data.bmi;
+            document.getElementById('bmi_result').className = `bmi-value ${bmiClass}`;
+            document.getElementById('bmi_category').innerText = data.bmi_category;
+            document.getElementById('calorie_target').innerText = data.calorie_target + ' kcal';
             const mealList = document.getElementById('meal_recommendations');
             mealList.innerHTML = "";
             data.meals.forEach(meal => {
                 const li = document.createElement("li");
-                li.innerText = `${meal["Food Name"]} (${meal.calories} kcal)`;
+                li.className = "food-item bg-gray-50 p-3";
+                li.innerHTML = `
+                    <div class="font-medium text-gray-800">${meal.meal}</div>
+                    <div class="text-gray-600">${meal.name}</div>
+                    <div class="text-sm text-blue-600 mt-1">${meal.calories} kcal | ${meal.protein}g protein</div>
+                `;
                 mealList.appendChild(li);
             });
- 
             const healthTipsList = document.getElementById('health_tips');
             healthTipsList.innerHTML = "";
             data.health_tips.forEach(tip => {
                 const li = document.createElement("li");
-                li.innerText = tip;
+                li.className = "flex items-start";
+                li.innerHTML = `
+                    <div class="bg-blue-100 p-1 mr-3">
+                        <svg class="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <span>${tip}</span>
+                `;
                 healthTipsList.appendChild(li);
             });
- 
             const exerciseList = document.getElementById('exercise_recommendations');
             exerciseList.innerHTML = "";
             data.exercise_recommendations.forEach(exercise => {
                 const li = document.createElement("li");
-                li.innerText = exercise;
+                li.className = "flex items-start";
+                li.innerHTML = `
+                    <div class="bg-orange-100 p-1 mr-3">
+                        <svg class="h-4 w-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <span>${exercise}</span>
+                `;
                 exerciseList.appendChild(li);
             });
         }
- 
         function restart() {
             location.reload();
         }
@@ -179,4 +366,3 @@
 </body>
 
 </html>
- 
